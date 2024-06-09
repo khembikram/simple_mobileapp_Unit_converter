@@ -1,6 +1,8 @@
 package com.firstproject.unitconverter;
 
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,13 +19,16 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     Button btn;
     TextView textView;
+    String TAG=MainActivity.class.getSimpleName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
+        Log.d(TAG,"onCreate::");
         editText = findViewById(R.id.editText);
         btn = findViewById(R.id.btn);
         textView = findViewById(R.id.textView);
@@ -44,7 +49,34 @@ public class MainActivity extends AppCompatActivity {
                 textView.setText("" + pounds);
             }
         });
+    }
+    @Override
+    protected void  onStart(){
+        super.onStart();
+        Log.d(TAG, "onStart:::");
+    }
 
+    @Override
+    protected void onPostResume(){
+        super.onPostResume();
+        Log.d(TAG,"On Resume:::");
+    }
+    @Override
+    protected void  onPause(){
+        super.onPause();
+        Log.d(TAG,"On Pause::::");
+    }
+
+    @Override
+    protected void  onStop(){
+        super.onStop();
+        Log.d(TAG,"On Stop::::");
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG,"On Destroy::::");
     }
 
 
